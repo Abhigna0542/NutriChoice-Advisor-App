@@ -1,0 +1,17 @@
+{% extends 'NutriChoice/base.html' %}
+
+{% block content %}
+<h2>BMI Results</h2>
+<p><strong>Your BMI:</strong> {{ bmi }}</p>
+<p><strong>Height:</strong> {{ height }} cm</p>
+<p><strong>Weight:</strong> {{ weight }} kg</p>
+<p><strong>Optimal Weight:</strong> {{ optimal_weight }} kg</p>
+
+<hr>
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+
+<!-- Button to go to recipe generation -->
+<a href="{% url 'generate_recipes' %}" class="btn btn-primary">Generate Recipes</a>
+{% endblock %}

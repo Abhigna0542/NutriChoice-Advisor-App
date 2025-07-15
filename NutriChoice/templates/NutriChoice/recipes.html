@@ -1,0 +1,89 @@
+{% extends 'NutriChoice/base.html' %}
+{% block content %}
+<h1>NutriChoice Advisor 🍽️</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-section">
+            <div class="form-group">
+                <label for="ingredients">Enter Ingredients:</label>
+                <textarea id="ingredients" name="ingredients" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="diet">Select Diet Type:</label>
+                <select id="diet" name="diet">
+                    <option value="Balanced">Balanced</option>
+                    <option value="Keto">Keto</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="Paleo">Paleo</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="cuisine">Select Cuisine Type:</label>
+                <select id="cuisine" name="cuisine">
+                    <option value="Indian">Indian</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Mediterranean">Mediterranean</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Actual Weight:</label>
+                <input type="text" value="{{ actual_weight }} kg" readonly class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Optimal Weight:</label>
+                <input type="text" value="{{ optimal_weight }} kg" readonly class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="adjust_weight">Select Weight Loss or Gain:</label>
+                <select id="adjust_weight" name="adjust_weight">
+                    <option value="Weight Loss">Weight Loss</option>
+                    <option value="Weight Gain">Weight Gain</option>
+                </select>
+            </div>
+
+            <input type="submit" value="Analyze Meals">
+        </div>
+    </form>
+
+    {% if healthy_recipe and indulgent_recipe %}
+    <div class="results">
+        <div class="recipe-box">
+            <h3>🥗 Healthy Recipe</h3>
+            <div class="recipe-text">{{ healthy_recipe|safe }}</div>
+        </div>
+        <div class="recipe-box">
+            <h3>🍕 Indulgent Recipe</h3>
+            <div class="recipe-text">{{ indulgent_recipe|safe }}</div>
+        </div>
+    </div>
+
+    <h2>⚖️ Nutrition Comparison</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Healthy</th>
+                <th>Indulgent</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in nutrition_comparison %}
+                <tr>
+                    <td>{{ row.metric }}</td>
+                    <td>{{ row.healthy }}</td>
+                    <td>{{ row.indulgent }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}
