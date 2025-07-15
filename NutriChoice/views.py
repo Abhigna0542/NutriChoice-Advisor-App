@@ -102,16 +102,14 @@ def generate_recipes(request):
         
         prompt = f"""Using these ingredients: {ingredients}, and considering a {diet} diet and {cuisine} cuisine, generate two recipes for {adjust_weight} from {actual_weight} kg to {optimal_weight} kg :
         
-        🔹 Healthy Recipe
-        for Breakfast, Lunch and Dinner
+        🔹 Healthy Recipe having Breakfast, Lunch and Dinner as headings should contain
         1. Name of the recipe
         2. List of ingredients with quantities
         3. Step-by-step procedure
         4. Nutritional analysis (calories, protein, carbs, fats in grams)
         5. Final analysis explaining the health benefits and nutritional insights
         
-        🔹 Indulgent Recipe
-        for Breakfast, Lunch and Dinner
+        🔹 Indulgent Recipe having Breakfast, Lunch and Dinner as headings should contain
         1. Name of the recipe
         2. List of ingredients with quantities
         3. Step-by-step procedure
