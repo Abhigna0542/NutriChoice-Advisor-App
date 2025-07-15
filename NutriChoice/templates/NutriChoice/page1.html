@@ -3,7 +3,7 @@
 <h2>BMI & Optimal Weight Calculator</h2>
 <form action="{% url 'calculate_bmi' %}" method="POST">
     {% csrf_token %}
-    <label>Height (ft):</label><input type="number" name="height" required><br>
+    <label>Height (cm):</label><input type="number" name="height" required><br>
     <label>Weight (kg):</label><input type="number" name="weight" required><br>
     <label>Gender:</label>
     <select name="gender" required>
