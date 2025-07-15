@@ -67,6 +67,7 @@ def home(request):
 def calculate_bmi(request):
     if request.method == 'POST':
         height = float(request.POST['height'])
+        height = height * 30.48
         weight = float(request.POST['weight'])
         gender = 0 if request.POST['gender'] == 'Male' else 1
 
