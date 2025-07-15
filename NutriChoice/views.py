@@ -71,7 +71,7 @@ def calculate_bmi(request):
         gender = 0 if request.POST['gender'] == 'Male' else 1
 
         bmi = model.predict([[gender, height, weight]])[0]
-        opt_weight = calculate_optimal_weight(height, round(bmi, 2))
+        opt_weight = calculate_optimal_weight(height)
 
         request.session['actual_weight'] = weight
         request.session['optimal_weight'] = opt_weight
