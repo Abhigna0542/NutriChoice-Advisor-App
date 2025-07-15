@@ -1,9 +1,9 @@
-def calculate_optimal_weight(height_cm, bmi):
+def calculate_optimal_weight(height_cm):
     """
     Calculate optimal weight using a standard healthy BMI value (e.g., 22).
     """
     height_m = height_cm / 100
-    optimal_weight = bmi * (height_m ** 2)
+    optimal_weight = 22 * (height_m ** 2)
     return round(optimal_weight, 1)
 
 
